@@ -17,12 +17,13 @@
 
   export default {
     name: "TheHeader",
-    components: {AppButton}
+    components: { AppButton }
   }
 </script>
 
 <style lang="scss" scoped>
   .header .container {
+    font-family: "Montserrat", sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
