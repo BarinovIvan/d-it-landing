@@ -9,11 +9,12 @@
       </section>
       <section class="brands">
         <h2 class="title">Мы работаем с этими брендами</h2>
-        <div class="brands__list">
+        <div class="brands__list brands-list">
           <brands-item
             v-for="item in brandsList"
             :key='brandsList.id'
             :brand-item="item"
+            class="brands-list__item"
           />
         </div>
       </section>
@@ -41,6 +42,26 @@
           />
         </div>
       </section>
+      <section class="stuff">
+        <h2 class="title">Наша команда</h2>
+        <div class="stuff__list stuff-list">
+          <stuff-item
+              v-for="stuff in stuffList"
+              :stuff-item="stuff"
+              :key="stuff.id"
+              class="stuff-list__item"
+          />
+        </div>
+      </section>
+      <section class="contact">
+        <h2 class="title">Мы с вами свяжемся!</h2>
+        <contact-form
+            v-if="dialogIsShown"
+            @closeDialog="dialogIsShown=false"
+            @openDialog="dialogIsShown=true"
+        />
+        <app-button @click="dialogIsShown=true">Оставить контактные данные</app-button>
+      </section>
     </div>
   </div>
 </template>
@@ -50,13 +71,23 @@
   import BrandsItem from "@/components/BrandsItem";
   import AboutUsItem from "@/components/AboutUsItem";
   import ServiceItem from "@/components/ServiceItem";
+  import StuffItem from "@/components/StuffItem";
+  import ContactForm from "@/components/ContactForm";
+
   export default {
     name: 'HomeView',
-    components: {ServiceItem, AboutUsItem, BrandsItem, AppButton },
+    components: { ContactForm, StuffItem, ServiceItem, AboutUsItem, BrandsItem, AppButton },
     data() {
       return {
+        dialogIsShown: false,
         brandsList: [
-          { id: 1, name: 'Битрикс24', alt:'', imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-bitrix-24.png'  }
+          { id: 1, name: 'Zoom', alt: 'Логотип zoom', imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-zoom.png' },
+          { id: 2, name: 'Севергазбанк', alt: 'Логотип Севергазбанк', imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-severgazbank.png' },
+          { id: 3, name: 'СПБ Биржа', alt:'Логотип СПБ Биржа', imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-spb-birzha.png'  },
+          { id: 4, name: 'EFKO', alt:'Логотип EFKO', imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-efko.png'  },
+          { id: 5, name: 'LEOMAX', alt:'Логотип LEOMAX', imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-leomax.png'  },
+          { id: 6, name: 'Virtual', alt:'Логотип VIRUAL', imageLink: 'https://img.freepik.com/premium-vector/virtual-tech-logo-design-templates_24599-397.jpg?w=2000'  },
+          { id: 7, name: 'ProBike', alt:'Логотип ProBike', imageLink: 'https://i.otzovik.com/objects/b/1520000/1518559.png'  }
         ],
         aboutUsList: [
           { id: 1, title: 'С нами ваш доход увеличится', caption: 'Доходы наших клиентов возрастают в среднем на 10%', imageName: 'Icon1' },
@@ -67,7 +98,7 @@
         servicesList: [
           {
             id: 1,
-            title: 'С нами ваш доход увеличится',
+            title: 'Поддержка Bitrix24',
             caption: 'Доходы наших клиентов возрастают в среднем на 10%',
             serviceLevel:'8x5',
             alt:'',
@@ -75,44 +106,79 @@
           },
           {
             id: 2,
-            title: 'С нами ваш доход увеличится',
+            title: 'Поддержка SAP Ariba',
             caption: 'Доходы наших клиентов возрастают в среднем на 10%',
             serviceLevel:'8x5',
             alt:'',
-            imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-bitrix-24.png'
+            imageLink: 'https://roi4cio.com/fileadmin/user_upload/sap-ariba.png'
           },
           {
             id: 3,
-            title: 'С нами ваш доход увеличится',
+            title: 'Поддержка 1C ERP Управление производством',
             caption: 'Доходы наших клиентов возрастают в среднем на 10%',
             serviceLevel:'8x5',
             alt:'',
-            imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-bitrix-24.png'
+            imageLink: 'https://www.fkassa.ru/upload/iblock/321/toeeigbrhe3jvesx1qu1u6udjxg0ojlm.png'
           },
           {
             id: 4,
-            title: 'С нами ваш доход увеличится',
+            title: 'Поддержка Experium',
             caption: 'Доходы наших клиентов возрастают в среднем на 10%',
             serviceLevel:'8x5',
             alt:'',
-            imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-bitrix-24.png'
+            imageLink: 'https://lbsglobal.com/images/text/logo_experium.JPG'
           },
           {
             id: 5,
-            title: 'С нами ваш доход увеличится',
+            title: 'Сервисная и техническая поддержка',
             caption: 'Доходы наших клиентов возрастают в среднем на 10%',
             serviceLevel:'8x5',
             alt:'',
-            imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-bitrix-24.png'
+            imageLink: 'https://cdn4.iconfinder.com/data/icons/technical-support/256/96-1024.png'
+          },
+        ],
+        stuffList: [
+          {
+            id: 1,
+            name: 'Шолпов В.У.',
+            caption: 'Выбирает техническое решение задачи: предлагает использовать определенные технические рещения. ' +
+                'Он же проверяет работу других разработчиков и решает самые сложные или ответственные технические задачи\'',
+            position:'Senior разработчик',
+            alt:'Фото Шолпова В.У.',
+            imageName: 'senior'
           },
           {
-            id: 6,
-            title: 'С нами ваш доход увеличится',
-            caption: 'Доходы наших клиентов возрастают в среднем на 10%',
-            serviceLevel:'8x5',
-            alt:'',
-            imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-bitrix-24.png'
+            id: 2,
+            name: 'Генералов Г.Г.',
+            caption: 'Решает бизнес-задачи, которые закрывают конкретную проблему.',
+            position:'Middle разработчик',
+            alt:'Фото Генералова Г.Г.',
+            imageName: 'middle'
           },
+          {
+            id: 3,
+            name: 'Младшев М.В.',
+            caption: 'Решает различные технические задачи',
+            position:'Junior разработчик',
+            alt:'Фото Младшев М.В.',
+            imageName: 'junior'
+          },
+          {
+            id: 4,
+            name: 'Системов А.А.',
+            caption: 'Занимается поддержкой КИС и решает проблемы с АО',
+            position:'Системный администратор',
+            alt:'Фото Системова А.А.',
+            imageName: 'admin'
+          },
+          {
+            id: 5,
+            name: 'Мелехов Г.П.',
+            caption: 'Отвечает на вопросы, принимает заявки, решает простые технические задачи',
+            position:'Диспетчер',
+            alt:'',
+            imageName: 'dispetcher'
+          }
         ]
       }
     }
@@ -132,6 +198,14 @@
     }
   }
 
+  .brands {
+    &__list {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+  }
+
   .aboutUsList {
     display: flex;
     justify-content: space-between;
@@ -143,12 +217,25 @@
 
   .services-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 
     &__item {
       width: calc(100%/3 - 60px/3);
+    }
+  }
+
+  .stuff {
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+
+      &__item {
+        width: calc(100%/3 - 200px/5);
+      }
     }
   }
 </style>

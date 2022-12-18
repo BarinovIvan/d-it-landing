@@ -36,7 +36,6 @@
     }
 
     img {
-      width: 144px;
       height: 144px;
     }
 

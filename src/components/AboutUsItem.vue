@@ -1,6 +1,6 @@
 <template>
   <div class="about-us__item">
-    <img :src="require(`@/assets/aboutUs/${aboutItem.imageName}.png`)" alt="Иконка"/>
+    <img :src="require(`@/assets/aboutUs/${ aboutItem.imageName }.png`)" alt="Иконка"/>
     <h2>{{ aboutItem.title }}</h2>
     <p>{{ aboutItem.caption }}</p>
   </div>
@@ -21,7 +21,6 @@
 <style lang="scss" scoped>
   .about-us__item{
     display: flex;
-    align-items: left;
     justify-content: left;
     flex-direction: column;
     gap: 25px;

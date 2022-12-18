@@ -16,5 +16,6 @@
     color: white;
     background: #8447E9;
     border: 0;
+    border-radius: 5px;
   }
 </style>
