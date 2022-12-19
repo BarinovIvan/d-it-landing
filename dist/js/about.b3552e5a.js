@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkdima_landing"]=self["webpackChunkdima_landing"]||[]).push([[443],{399:function(n,t,u){u.r(t),u.d(t,{default:function(){return r}});var a=function(){var n=this;n._self._c;return n._m(0)},i=[function(){var n=this,t=n._self._c;return t("div",{staticClass:"about"},[t("h1",[n._v("This is an about page")])])}],s=u(1),l={},e=(0,s.Z)(l,a,i,!1,null,null,null),r=e.exports}}]);
+//# sourceMappingURL=about.b3552e5a.js.map
