@@ -99,43 +99,51 @@
           {
             id: 1,
             title: 'Поддержка Bitrix24',
-            caption: 'Доходы наших клиентов возрастают в среднем на 10%',
+            caption: 'Обслуживание Bitrix24',
             serviceLevel:'8x5',
-            alt:'',
+            alt:'Иконка Bitrix24',
             imageLink: 'https://toplogos.ru/images/thumbs/preview-logo-bitrix-24.png'
           },
           {
             id: 2,
             title: 'Поддержка SAP Ariba',
-            caption: 'Доходы наших клиентов возрастают в среднем на 10%',
+            caption: 'Редактирование интерфейса SAP Ariba',
             serviceLevel:'8x5',
-            alt:'',
+            alt:'Иконка SAP Ariba',
             imageLink: 'https://roi4cio.com/fileadmin/user_upload/sap-ariba.png'
           },
           {
             id: 3,
             title: 'Поддержка 1C ERP Управление производством',
-            caption: 'Доходы наших клиентов возрастают в среднем на 10%',
+            caption: 'Настройка 1C ERP Управление производством\'',
             serviceLevel:'8x5',
-            alt:'',
+            alt:'Иконка 1C ERP',
             imageLink: 'https://www.fkassa.ru/upload/iblock/321/toeeigbrhe3jvesx1qu1u6udjxg0ojlm.png'
           },
           {
             id: 4,
             title: 'Поддержка Experium',
-            caption: 'Доходы наших клиентов возрастают в среднем на 10%',
+            caption: 'Разработка отчетов для Experium',
             serviceLevel:'8x5',
-            alt:'',
+            alt:'Иконка Experium',
             imageLink: 'https://lbsglobal.com/images/text/logo_experium.JPG'
           },
           {
             id: 5,
             title: 'Сервисная и техническая поддержка',
-            caption: 'Доходы наших клиентов возрастают в среднем на 10%',
+            caption: 'Обеспечение работы ПО и АО',
             serviceLevel:'8x5',
-            alt:'',
+            alt:'Иконка ТП',
             imageLink: 'https://cdn4.iconfinder.com/data/icons/technical-support/256/96-1024.png'
           },
+          {
+            id: 5,
+            title: 'Поддержка модуля "Продажи" 1С:ERP',
+            caption: 'Работа с модулем "Продажи" 1С:ERP',
+            serviceLevel:'8x5',
+            alt:'Иконка 1C ERP',
+            imageLink: 'https://sky-ic.ru/resources/images/content/solutions/erp/logo.png'
+          }
         ],
         stuffList: [
           {
